@@ -1,0 +1,19 @@
+<div class="row top-menu">
+        <h1> ZZ Sporting Goods 
+                <input type="button" class=".btn" value="Login" style="float: right" onclick="location.href = '{{url_for('showlogin')}}' ;">
+    
+                <input type="button" class=".btn" value="Logout" style="float: right" onclick="location.href = '{{url_for('gdisconnect')}}' ;">
+        </h1>
+	<div class="col-md-6">
+		<a href="{{url_for('home')}}">
+			<span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home
+                </a>
+                <a href="{{url_for('show_categories')}}">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Sport Categories
+                </a>
+                <a href="{{url_for('show_all_items')}}">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Items
+                </a>
+ 	</div>
+	
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title Sporting Goods Catalog></title>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+        
+	</head>
+	<body>
+
+            <div class = 'flash'>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+        
+                            <ul>
+                            {% for message in messages %}
+                                <li> <strong> {{ message }} </strong> </li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+            </div>
+
+		<div class="container">
+			{% block content %}
+			{% endblock %}
+		</div>
+
+        
+
+	</body>
+</html>

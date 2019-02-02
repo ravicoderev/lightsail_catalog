@@ -1,0 +1,48 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %} 
+
+        <div class="row divider green">
+                <div class="col-md-12"></div>
+            </div>
+            <div class="row banner menu">
+                <div class="col-md-11 col-md-offset-1 padding-none">
+                    <h1>Delete Category: {{category.category_name}}</h1>
+                </div>
+                <div class="col-md-11 col-md-offset-1 padding-none">
+                        <h2> All items in this category will also be deleted. Are you sure you want to delete? </h2>
+                </div>
+            </div>
+            <div class="row">
+                    <br><br>
+                    <table>
+
+                            <tr>
+                                <th> Item ID </th>
+                                <th> Item Name </th>
+                                <th> Item Description </th>
+                                
+                            </tr>
+                            
+                            {% for i in items %}
+                            <tr>
+                                <td> {{i.item_id}} </td>
+                                <td> {{i.item_name}} </td>
+                                <td> {{i.item_description}} </td>
+                                
+                                
+                            </tr>
+                            {% endfor %}
+    
+                        </table>
+
+                <div class="col-md-6 col-md-offset-1 padding-top">
+                    <form action="{{ url_for('delete_category',category_id = category.category_id)}}" method = "post">
+                            <input type="submit" style="width:100px; height:50px;" value="Delete" >    
+                            <input type="button" style="width:100px; height:50px;" value="Cancel" onclick="location.href = '{{url_for('show_categories')}}'">
+                    </form>
+                </div>
+            </div>
+      
+
+{% endblock %}
