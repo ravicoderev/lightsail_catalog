@@ -2,7 +2,14 @@
 
 
 #  Flask modules from flask library
-from flask import Flask, render_template, request, redirect, jsonify, url_for, flash, make_response
+from flask import Flask
+from flask import render_template
+from flask import request
+from flask import redirect
+from flask import jsonify
+from flask import url_for
+from flask import flash
+from flask import make_response
 from flask import session as login_session
 
 # SQL Alchemy modules
@@ -10,7 +17,7 @@ from sqlalchemy import create_engine, asc
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
 # from databasesetup import Category, Item, User
-from databasesetup_pg import Users, Category, Items
+from lightsail_catalog.databasesetup_pg import Users, Category, Items
 
 # Authentication modules for google OAuth
 from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
@@ -49,7 +56,7 @@ app = Flask(__name__)
 
 
 CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/lightsail_catalog/lightsail_catalog/client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Sporting Goods Catalog App"
 
 
@@ -62,7 +69,7 @@ HOST="localhost"
 PORT="5432"
 
 # engine = create_engine('postgresql+psycopg2://USER:PASSWORD@HOST/DBNAME')
-engine = create_engine("postgresql://sportscatalogitems:1234@localhost:5432/sportscatalogitems")
+engine = create_engine("postgresql://catalog:1234@localhost:5432/catalog")
 base = declarative_base()
 
 DBSession = sessionmaker(bind=engine)
@@ -122,7 +129,7 @@ def gconnect():
 
     try:
         # Upgrade the authorization code into a credentials object
-        oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
+        oauth_flow = flow_from_clientsecrets('/var/www/lightsail_catalog/lightsail_catalog/client_secrets.json', scope='')
         oauth_flow.redirect_uri = 'postmessage'
         credentials = oauth_flow.step2_exchange(code)
     except FlowExchangeError:
