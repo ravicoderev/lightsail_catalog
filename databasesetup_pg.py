@@ -94,6 +94,6 @@ PASSWORD="1234"
 HOST="localhost"
 PORT="5432"
 
-engine = create_engine('postgresql+psycopg2://sportscatalogitems:1234@localhost/sportscatalogitems')
+engine = create_engine('postgresql+psycopg2://catalog:1234@localhost/catalog')
 
 Base.metadata.create_all(engine)
