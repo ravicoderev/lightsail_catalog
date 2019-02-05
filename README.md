@@ -18,6 +18,8 @@ Setup and configure a baseline
     - Setup ssh keypair to access from command prompt
     - Example.
 ```
+ssh -i <AMAZON_LIGHTSAIL_USER_PRIVATE_KEY> <user_name>@<ip address>
+
 ssh -i <AMAZON_LIGHTSAIL_PRIVATE_KEY> ubuntu@<ip address>
 ```
 
@@ -356,7 +358,7 @@ sudo service apache2 restart
 http://<ip address>/catalog
 ```
 *Known Issues & Not in scope:*
-1. The Login feature does not work since the feature requries Google Singin OAuth which is not configured to allow public ip addresses.
+1. The Login feature does not work since the feature requires Google Singin OAuth which is not configured to allow public ip addresses.
 2. The above limits the application to 'View' only since all Create/Update/Delete operation requires successful sign-in.
 
 
