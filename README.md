@@ -29,6 +29,8 @@ ssh -i <AMAZON_LIGHTSAIL_PRIVATE_KEY> ubuntu@<ip address>
 ```language
 sudo apt update
 
+sudo apt upgrade --dry-run
+
 sudo apt upgrade
 ```
 
@@ -188,6 +190,12 @@ nano .ssh/authorized_keys
 ### Configure the local timezone to UTC.
 ```
 sudo dpkg-reconfigure tzdata
+```
+
+### Diable remote login by root.
+Edit sshd_config file by ```sudo nano /etc/ssh/sshd_config``` and find "#PermitRootLogin prohibit-password" and add a new line
+```
+PermitRootLogin no
 ```
 [https://askubuntu.com/questions/138423/how-do-i-change-my-timezone-to-utc-gmt]
 
